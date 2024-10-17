@@ -1,0 +1,44 @@
+.image-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.my-nav-items {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.banner-image img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+#banner-text1 {
+    padding-bottom: 10vw;
+    font-weight: 700;
+    font-size: 60px;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+#banner-text2 {
+    font-weight: 400;
+    font-size: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.container {
+    max-width: 1300px;
+}

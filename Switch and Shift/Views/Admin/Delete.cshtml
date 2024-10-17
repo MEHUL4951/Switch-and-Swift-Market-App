@@ -1,0 +1,79 @@
+﻿
+@model Switch_and_Shift.Models.Users
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Are you sure you want to delete this User?</h1>
+
+
+<div>
+
+    <div class="section2-product-details" style="margin: 70px; margin-left: 10%; margin-right: 10%">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h5 class="mb-0 seller_name">User First Name :</h5>
+                                </div>
+                                <div class="col-sm-7 text-secondary">@Html.DisplayFor(model => model.FirstName)</div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h5 class="mb-0 seller_email">User Last Name :</h5>
+                                </div>
+                                <div class="col-sm-7 text-secondary">@Html.DisplayFor(model => model.LastName)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <div class="box2 box2-modified" style="margin-top:5%">
+                        <img id="img2" alt="" style="height:100px; width:100px;" src="~/website_images/complain.png" />
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h5 class="mb-0 seller_name">User Email :</h5>
+                                </div>
+                                <div class="col-sm-7 text-secondary">@Html.DisplayFor(model => model.Email)</div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h5 class="mb-0 seller_email">User Phone Number :</h5>
+                                </div>
+                                <div class="col-sm-7 text-secondary">@Html.DisplayFor(model =>model.Phone)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="UserId" />
+                <input type="submit" value="Ban" class="btn btn-danger" /> |
+
+            </form>
+
+        </div>
+    </div>
+
+    
+</div>
+

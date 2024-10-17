@@ -1,0 +1,60 @@
+﻿@model Switch_and_Shift.Models.Report
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>REPORT</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="soldOut">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="product_model" value="@ViewBag.reportModel" class="form-control" />
+                <span asp-validation-for="product_model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="product_brand" value="@ViewBag.reportBrand" class="form-control" />
+                <span asp-validation-for="product_brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="product_price" class="control-label" style="font-weight: bold;"></label>
+                <input asp-for="product_price" value="@ViewBag.reportPrice" class="form-control" />
+                <span asp-validation-for="product_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="buyer_email" class="control-label" style="font-weight: bold;"></label>
+                <input asp-for="buyer_email" class="form-control" />
+                <span asp-validation-for="buyer_email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="seller_email" value="@ViewBag.reportSellerEmail" class="form-control" />
+                <span asp-validation-for="seller_email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="image_name" value="@ViewBag.reportImageLocation" class="form-control" />
+                <span asp-validation-for="image_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <label class="text-danger">@ViewBag.NotificationOfReport</label>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="height:150px" >
+
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

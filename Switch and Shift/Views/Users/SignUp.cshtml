@@ -1,0 +1,171 @@
+﻿@model Switch_and_Shift.Models.Users
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-tofit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500;600;700&family=Shadows+Into+Light&display=swap"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/login_signup.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/edit_product_2.css" />
+
+    <title>Sign Up</title>
+</head>
+
+
+
+
+
+
+<body>
+    <div class="section0">
+        <ul class="nav">
+            <li class="nav-item logo">
+                <a class="nav-link active" href="/">Switch And Shift</a>
+            </li>
+        </ul>
+    </div>
+    <form asp-action="SignUp">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div id="spinner_id" class="loading" style="display: none;"></div>
+        <div class="section1">
+            <div class="container register-form">
+                <div class="form">
+                    <div class="form-content ">
+                        <img class="center" src="~/website_images/signup.png">
+                        <h2 class="sign-up-h2">Sign Up</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-icons">
+                                        <label asp-for="FirstName" class="control-label" ></label>
+                                        <input asp-for="FirstName" class="sign-up-input form-control" id="name_field" type="text" class="name"
+                                               placeholder="FirstName" value="" />
+                                        <i style="margin-top:5%" class="fa fa-user fa-lg"></i>
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icons">
+                                        <label asp-for="District" class="control-label"></label>
+                                        <input asp-for="District" class="sign-up-input" id="District_field" type="text" class="District form-control"
+                                               placeholder="District" value="" /><i  style="margin-top:5%" class="fa fa-map-marker"></i>
+                                        <span asp-validation-for="District" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icons">
+                                        <label asp-for="Email" class="control-label"></label>
+                                        <input asp-for="Email" id="email_field" type="Email" class="Email sign-up-input form-control"
+                                               placeholder="Email" value="" /><i style="margin-top:5%" class="fa fa-envelope icon"></i>
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icons">
+                                        <label asp-for="Password" class="control-label"></label>
+                                        <input asp-for="Password" class="sign-up-password" id="password_field" type="password" class="password form-control"
+                                               placeholder="Password" value="" /><i style="margin-top:5%" class="fa fa-key fa-lg"></i>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-icons">
+                                        <label asp-for="LastName" class="control-label"></label>
+                                        <input asp-for="LastName" id="gaming_name_field" type="text" class="gaming_name sign-up-input form-control"
+                                               placeholder="Last Name" value="" /><i style="margin-top:5%" class="fa fa-user fa-lg"></i>
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-icons">
+                                        <label asp-for="Location" class="control-label"></label>
+                                        <input asp-for="Location" class="sign-up-input" id="division_field" type="text" class="division form-control"
+                                               placeholder="Location" value="" /><i style="margin-top:5%" class="fa fa-map-marker"></i>
+                                        <span asp-validation-for="Location" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icons">
+                                        <label asp-for="Phone" class="control-label"></label>
+                                        <input asp-for="Phone" class="sign-up-password" id="phone_number_field" type="text" class="phone_number form-control"
+                                               placeholder="Phone Number" value="" /><i style="margin-top:5%" class="fa fa-phone-square"></i>
+                                        <span asp-validation-for="Phone" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icons">
+                                        <label asp-for="ConfirmPassword" class="control-label"></label>
+                                        <input asp-for="ConfirmPassword" class="sign-up-password" id="confirm_password_field" type="password" class="confirm_password form-control"
+                                               placeholder="Confirm Password" value="" /><i style="margin-top:5%" class="fa fa-key fa-lg"></i>
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input style="width:95%" type="submit" value="SIGN UP"  class="new-container custom-sign-up-button form"></input>
+                            <div class="container-fluid adjust">
+                                <div class="col-sm-4 ContinueWith">
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+
+                        <div class="form-group">
+                            <label class="text-danger">@ViewBag.Notification</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <footer style="background-color:#F67576; margin-top:200px;" class="text-center">
+
+        <div class="text-white text-center p-3" style="background-color:#6406B2 ">
+            © 2021 Copyright:
+            <a class="text-white" href="">All Rights Reserved.</a>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- js script
+    <script src="js/<%=script%>"></script>-->
+
+</body>
+
+</html>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

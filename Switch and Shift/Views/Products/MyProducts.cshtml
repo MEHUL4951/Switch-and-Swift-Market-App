@@ -1,0 +1,276 @@
+﻿@model IEnumerable<Switch_and_Shift.Models.Products>
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+    int checkIfEmpty = Model.Count();
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Posts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500;600;700&family=Shadows+Into+Light&display=swap"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500;600;700&family=Shadows+Into+Light&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+    <!--Icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/post.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/footer.css" />
+</head>
+
+
+<body>
+
+
+    <header>
+        <div class="bs-example">
+            <div class="topnav">
+                <nav class="navbar navbar-expand-md navbar-light bg-light">
+                    <img src="~/website_images/logo.png" class="logo_image" />
+                    @if (HttpContextAccessor.HttpContext.Session.GetString("Email") != null)
+                    {
+                        <div class="topnav-right user">
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                        <img src="~/website_images/profile_user_blue.png">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a asp-area="" asp-controller="Users" asp-action="ViewProfile" class="dropdown-item">My Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a asp-area="" asp-controller="Home" asp-action="Index" class="dropdown-item logout" id="log-out">Log Out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-right"><a class="user_name">@HttpContextAccessor.HttpContext.Session.GetString("FirstName")</a></div>
+                    }
+                </nav>
+            </div>
+        </div>
+
+
+        <nav class="navbar navbar-expand-md navbar-custom ">
+            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto ml-auto mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Welcome">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Search Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Products" asp-action="MyProducts">My Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Reports" asp-action="BoughtProducts">Bought Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Reports" asp-action="SoldProducts">Sold Products</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    @if (checkIfEmpty != 0)
+    {
+        <h1 style="font-family: 'Saira Semi Condensed', sans-serif; text-align: center; color: #6406B2; margin-top: 0; font-weight: bold;">My Products</h1>
+    }
+
+    @if (checkIfEmpty == 0)
+    {
+        <h1 style="text-align: center; color:#6406B2;margin-top: 0;
+font-family: Saira Semi Condensed, sans-serif; font-weight: bold; margin-bottom: 5%;">
+            NO DATA
+        </h1>
+        <div class="banner-image image-container" style="background-color: #F2F2F2;">
+            <img src="~/website_images/box.png" class="my_image_class" alt="" style="max-width: 80%;display: block; margin-left: auto; margin-right:
+    auto; width: 25%;">
+
+        </div>
+    }
+
+
+    <div id="spinner_id" class="loading" style="display: none;"></div>
+    <div class="section-0">
+        <div class="container">
+            <div class="row">
+                @if (checkIfEmpty != 0)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-4">
+
+                        <form method="get" asp-action="MyProducts">
+
+
+                            <div class="section-1">
+
+
+                                <h3>Apply Filters</h3>
+
+                                <h4>Brand/Model</h4>
+                                <div class="form-outline">
+                                    <input type="search" id="form1" class="form-control" placeholder="Enter Brand/Model"
+                                           value="@ViewData["GetMyProductBrand"]" name="myProductBrand" aria-label="Search" />
+                                </div>
+
+                                <h4>Category</h4>
+                                <div class="form-outline">
+                                    <input type="search" id="form1" class="form-control" placeholder="Product Category"
+                                           value="@ViewData["GetMyProductCategory"]" name="myProductCategory" aria-label="Search" />
+                                </div>
+
+                                <button type="submit" value="Search" class="btn btn-warning  details-button" style="margin-top:25px">
+                                    Search
+                                </button>
+
+                                <button asp-action="ClearForMyProducts" type="submit" value="Clear Filters" class="btn btn-warning  details-button" style="margin-top:25px">
+                                    Clear Filters
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                }
+
+                <div class="col-lg-9 col-md-8 col-sm-8">
+
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="section2">
+                            <div class="section2-product-details">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12">
+                                            <div class="box2 box2-modified">
+                                                <img src="@("~/Image/"+item.image_name)" asp-append-version="true" style="width: auto; height: 400px; max-width:500px" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12">
+                                            <h2>@Html.DisplayFor(modelItem => item.product_brand)</h2>
+                                            <h4>@Html.DisplayFor(modelItem => item.product_model)</h4>
+                                            <div class="card mb-3">
+                                                <div class="card-body">
+
+                                                    <div class="row">
+                                                        <div class="col-sm-5">
+                                                            <h6 class="mb-0">Product Usage</h6>
+                                                        </div>
+                                                        <div class="col-sm-7 text-secondary">@Html.DisplayFor(modelItem => item.product_usage)</div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-5">
+                                                            <h6 class="mb-0">Price : </h6>
+                                                        </div>
+                                                        <div class="col-sm-7 text-secondary">@Html.DisplayFor(modelItem => item.product_price)</div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-5">
+                                                            <h6 class="mb-0">Post Date :</h6>
+                                                        </div>
+                                                        <div class="col-sm-7 text-secondary">@Html.DisplayFor(modelItem => item.post_date)</div>
+                                                    </div>
+                                                    <hr />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <form>
+                                        <a type="button" asp-action="Edit" class="btn btn-warning  details-button form-group" style="margin-top:30px" asp-route-id="@item.Product_ID">Edit</a>
+                                    </form>
+
+                                    <form>
+                                        <a type="submit" asp-controller="Products" asp-action="soldOut" class="btn btn-warning  details-button form-group"
+                                           style="margin-top:30px" asp-route-id="@item.Product_ID">Sold Out</a>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="text-center custom-footer">
+        <div class="container p-4 pb-0 footer-padding" style="margin-bottom:15px;">
+            <a href="https://www.google.com/">
+                <i class="fa fa-facebook-square footer-font"></i>
+            </a>
+            <a href="https://www.google.com/">
+                <i class="fa fa-linkedin-square footer-font"></i>
+            </a>
+            <a href="https://www.google.com/">
+                <i class="fa fa-github footer-font"></i>
+            </a>
+        </div>
+        <p class="footer-links">
+            <a>Team</a>
+            |
+            <a href="#">About</a>
+            |
+            <a href="#">Contact</a>
+        </p>
+
+        <div class="text-white text-center p-3" style="background-color:#6406B2; font-size: 1rem;">
+            © 2021 Copyright:
+            <a class="text-white" href="" style="text-decoration: none;">All Rights Reserved.</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--JS--->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+            integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+            crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
+
+
+
+
+@section Scripts {
+    <script src="~/js/category.js"></script>
+}

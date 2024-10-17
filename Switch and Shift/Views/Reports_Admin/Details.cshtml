@@ -1,0 +1,30 @@
+﻿@model Switch_and_Shift.Models.Reports_Admin
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>REPORTS_ADMIN</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.reporter_email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.reporter_email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.reportee_email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.reportee_email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.report_admin_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

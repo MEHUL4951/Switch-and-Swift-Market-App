@@ -1,0 +1,34 @@
+.fa-facebook-square:hover{
+  color: #F99B1E !important;
+
+}
+.fa-github:hover {
+    color: #F99B1E !important;
+}
+.fa-linkedin-square:hover {
+    color: #F99B1E !important;
+}
+.footer-font {
+  font-size: 40px;
+  color: white;
+  margin-left: 20px;
+}
+
+.custom-footer {
+  background-color: #9D51DC;
+  margin-top: 50px;
+}
+
+
+footer {
+  margin-top: auto;
+}
+.footer-links {
+    color: #ffffff;
+    margin: 20px 0 12px;
+  } 
+.footer-links a{
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 20px;
+}

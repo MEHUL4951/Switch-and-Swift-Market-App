@@ -1,0 +1,210 @@
+﻿@model Switch_and_Shift.Models.Users
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "ViewProfile";
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Posts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500;600;700&family=Shadows+Into+Light&display=swap"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500;600;700&family=Shadows+Into+Light&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+    <!--Icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/view_others_profile.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/footer.css" />
+
+</head>
+
+
+
+<body>
+
+
+    <header>
+
+        <div class="bs-example">
+            <div class="topnav">
+                <nav class="navbar navbar-expand-md navbar-light bg-light">
+                    <img src="~/website_images/logo.png" class="logo_image" />
+                    @if (HttpContextAccessor.HttpContext.Session.GetString("Email") != null)
+                    {
+                        <div class="topnav-right user">
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                        <img src="~/website_images/profile_user_blue.png">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a asp-area="" asp-controller="Users" asp-action="ViewProfile" class="dropdown-item">My Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a asp-area="" asp-controller="Home" asp-action="Index" class="dropdown-item logout" id="log-out">Log Out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-right"><a class="user_name">@HttpContextAccessor.HttpContext.Session.GetString("FirstName")</a></div>
+                    }
+                </nav>
+            </div>
+        </div>
+
+
+        <nav class="navbar navbar-expand-md navbar-custom ">
+            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto ml-auto mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Welcome">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Search Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Products" asp-action="MyProducts">My Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Reports" asp-action="BoughtProducts">Bought Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Reports" asp-action="SoldProducts">Sold Products</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+
+
+
+    <div class="section2-product-details">
+        <div class="container">
+            <div class="img_user">
+                <img id="img2" alt="" src="~/website_images/profile_user_blue.png" />
+
+            </div>
+
+
+
+            <div class="">
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">User Name :</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">User Email :</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">@Html.DisplayFor(model => model.Email)</div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">Phone Number :</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">@Html.DisplayFor(model => model.Phone)</div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">User Division :</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">@Html.DisplayFor(model => model.Location)</div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">User District: :</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">@Html.DisplayFor(model => model.District)</div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <form>
+                <button type="submit" asp-action="Edit" asp-controller="Users" class="btn btn-warning  edit-button form-group"
+                        style="margin-top:30px" asp-route-id=@Model.UserId>
+                    Edit Profile
+                </button>
+            </form>
+            <form>
+                <button type="submit" value="Create" asp-controller="Products" asp-action="Create" 
+                        class="btn btn-warning  details-button"
+                        style="margin-top:25px">
+                    POST FOR SALE
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <footer class="text-center custom-footer">
+        <div class="container p-4 pb-0 footer-padding" style="margin-bottom:15px;">
+            <a href="https://www.google.com/">
+                <i class="fa fa-facebook-square footer-font"></i>
+            </a>
+            <a href="https://www.google.com/">
+                <i class="fa fa-linkedin-square footer-font"></i>
+            </a>
+            <a href="https://www.google.com/">
+                <i class="fa fa-github footer-font"></i>
+            </a>
+        </div>
+        <p class="footer-links">
+            <a>Team</a>
+            |
+            <a href="#">About</a>
+            |
+            <a href="#">Contact</a>
+        </p>
+
+        <div class="text-white text-center p-3" style="background-color:#6406B2; font-size: 1rem;">
+            © 2021 Copyright:
+            <a class="text-white" href="" style="text-decoration: none;">All Rights Reserved.</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+
+
+.sign-up-h2 {
+  color: #6406B2;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 5%;
+  font-family: "Saira Semi Condensed", sans-serif;
+}
+
+/*COMMON HEADER AND FOOTER*/
+
+
+.form-content {
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 20px;
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+
+
+.section1 {
+  margin-top: 60px;
+  font-family: "Saira Semi Condensed", sans-serif;
+  margin-bottom: 10%;
+}
+.section1 .container {
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 20px;
+  max-width: 60%;
+}
+
+
+input[type="submit"] {
+  background-color: #6406B2;
+  color: white;
+  border: none;
+  width: 95%;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 22px;
+  margin-bottom: 20px;
+  margin-left: 3%;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #0B2C9E;
+}
+
+input[type="email"],
+select,
+textarea,
+input[type="password"],
+input[type="text"] {
+  width: 91%;
+  padding: 12px;
+  padding-left: 8%;
+  border: 2px solid #6406B2;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  margin-left: 15px;
+  margin-right: 20px;
+}
+.input-icons{
+   position: relative;
+}
+.input-icons i{
+   position: absolute;
+   left: 7%;
+   top: 30%;
+   color: gray;
+}
+
+
+
+.sign-up-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ea5455;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  resize: vertical;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: #333333;
+  font-family: "Saira Semi Condensed", sans-serif;
+}
+
+.sign-up-input_price{
+    width: 80%;
+    padding: 12px;
+    border: 2px solid #ea5455;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    resize: vertical;
+    margin-left: 5%;
+    margin-right: 10%;
+    color: #333333;
+    font-family: "Saira Semi Condensed", sans-serif;
+}
+
+
+
+

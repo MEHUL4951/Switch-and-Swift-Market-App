@@ -1,0 +1,106 @@
+﻿@model Switch_and_Shift.Models.Users
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-tofit=no">
+    <!--for footer-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="footer, address, phone, icons" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500;600;700&family=Shadows+Into+Light&display=swap"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/edit_profile.css" />
+    <title>Edit Profile</title>
+</head>
+<body>
+    <div class="section0">
+        <ul class="nav">
+            <li class="nav-item logo">
+                <a class="nav-link active" href="/">Switch And Shift</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="spinner_id" class="loading" style="display: none;"></div>
+    <div class="section1">
+        <div class="container">
+            <div class="form-content ">
+                <h2>My Profile</h2>
+                <form asp-action="Edit" id="form" class="form login-input">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="UserId" />
+                    <div class="form-group input-icons">
+                        <input type="text" placeholder="First Name" asp-for="FirstName" class="form-control" id="email" />
+                        <i class="fa fa-user fa-lg"></i>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-icons">
+                        <input type="text" placeholder="Last Name" asp-for="LastName" class="form-control" />
+                        <i class="fa fa-user fa-lg"></i>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-icons">
+                        <input type="text" placeholder="District" asp-for="District" class="form-control" id="email" />
+                        <i class="fa fa-map-marker"></i>
+                        <span asp-validation-for="District" class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-icons">
+                        <input type="text" placeholder="Location" asp-for="Location" class="form-control" id="email" />
+                        <i class="fa fa-map-marker"></i>
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-icons">
+                        <input type="email" placeholder="Email" asp-for="Email" class="form-control" id="email" />
+                        <i class="fa fa-envelope icon"></i>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-icons">
+                        <input type="text" placeholder="Phone Number" asp-for="Phone" class="form-control" id="email" />
+                        <i class="fa fa-phone-square"></i>
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group input-icons">
+                        <input type="submit" value="Save" asp-area="" asp-action="Edit" asp-controller="USERS" class="btn btn-primary" style="width:90%">
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,311 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f2f2f2;
+  font-family: "Saira Semi Condensed", sans-serif;
+}
+
+
+
+
+
+
+/*--navbar---*/
+
+
+
+
+
+
+
+.topnav a {
+  float: left;
+  color: #6406B2;
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  color: var(--color-yellow);
+}
+
+
+
+.navbar-custom {
+  background-color: #6406B2;
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: bold;
+}
+
+.navbar-custom a {
+  color: white;
+  font-size: 23px;
+}
+
+.navbar-nav a {
+  color: white;
+  margin-left: 3vw;
+}
+
+.navbar-nav a:hover {
+  color: #ffd96a;
+}
+
+.section1 .nav-link {
+  color: #ea5455;
+}
+
+.nav-link:hover {
+  color: #ffd96a;
+}
+
+
+
+.bs-example {
+  background-color: #FFFFFF;
+  padding: 0px 30px;
+  height: 60px;
+}
+.bg-light {
+  background-color: #FFFFFF !important;
+  padding: 0px 30px;
+  height: 60px;
+}
+
+.navbar-light .navbar-brand {
+  color: #ffffff;
+  font-size: 40px;
+  font-family: 'Lobster', cursive;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #6406B2;
+  font-family: "Saira Semi Condensed", sans-serif;
+  padding: 0px 40px;
+}
+.navbar-light .navbar-nav .nav-link img {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+
+.bold-font {
+  font-weight: 800;
+}
+.dropdown{
+  margin-bottom: -1%;
+}
+.dropdown-item{
+  color: #6406B2 !important ;
+  margin-left: 0vw !important ;
+}
+
+.user_name{
+  font-size: 26px;
+  font: bold;
+  text-decoration: none;
+  color: #6406B2;
+  font-weight: bold;
+
+
+}
+
+
+
+@media (max-width: 575px) {
+  logo_image{
+    margin-top: -20%;
+  }
+  .topnav-right {
+    float: right;
+
+    margin-top: -22%;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .logo_image{
+    margin-top: -10%;
+  }
+  .topnav-right {
+    float: right;
+
+    margin-top: -12%;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+
+  .logo_image{
+    margin-top: 2%;
+  }
+  .topnav-right {
+    float: right;
+  }
+
+  .user{
+
+    margin-left: 45%;
+
+  }
+
+  .dropdown-divider {
+    margin: 0% -1%;
+  }
+}
+@media (min-width: 991px) and (max-width: 1200px) {
+
+  .logo_image{
+    margin-top: 2%;
+  }
+
+  .topnav-right {
+    float: right;
+  }
+  .user{
+
+    margin-left: 60%;
+
+  }
+
+  .dropdown-divider {
+    margin: 0% -1%;
+  }
+}
+@media (min-width: 1200px) {
+
+  .logo_image{
+    margin-top: 2%;
+  }
+
+  .topnav-right {
+    float: right;
+  }
+
+  .user{
+
+    margin-left: 60%;
+
+  }
+
+  .dropdown-divider {
+    margin: 0% -1%;
+  }
+
+
+}
+
+.navbar-nav > .active > a {
+ color: #ffd96a;
+}
+
+
+/*about*/
+.section2-product-details{
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  padding: 20px;
+  max-width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  margin-left: 3%;
+  
+
+}
+.box2{
+  margin-top: 30px;
+  width: 100%;
+  padding: 0;
+  border-style: solid;
+  border-color: white;
+ border-width: 2px;
+text-align: center;
+}
+
+.box2 img{
+  max-width: 100%;
+  width: 100%;
+
+}
+.box2 img{
+  line-height: 0;
+  margin-left: 15%;
+
+}
+.box2-modified{
+  border-color: #F2F2F2;
+  line-height: 0;
+  border-width:0 ;
+}
+
+
+h1{
+  color: #6406B2;
+  font-family: 'Saira Semi Condensed', sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  
+}
+p{
+  color: #000000;
+  font-family: 'Saira Semi Condensed', sans-serif;
+   margin-top: 2%;
+   font-weight: bold;
+   font-size: 18px;
+
+}
+h4{
+  color: #6406B2;
+  font-family: 'Saira Semi Condensed', sans-serif;
+  margin-top: 2%;
+
+}
+
+* FOOTER*/
+
+.fa-facebook-square:hover{
+  color: #F99B1E !important;
+
+}
+.fa-github:hover {
+    color: #F99B1E !important;
+}
+.fa-linkedin-square:hover {
+    color: #F99B1E !important;
+}
+.footer-font {
+  font-size: 40px;
+  color: white;
+  margin-left: 20px;
+}
+
+.custom-footer {
+  background-color: #9D51DC;
+  margin-top: 50px;
+}
+
+
+footer {
+  margin-top: auto;
+}
+.footer-links {
+    color: #ffffff;
+    margin: 20px 0 12px;
+  } 
+.footer-links a{
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+
+/* FOOTER END*/

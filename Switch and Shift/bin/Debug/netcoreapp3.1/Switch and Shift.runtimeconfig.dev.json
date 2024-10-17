@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Sadia\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Sadia\\.nuget\\packages"
+    ]
+  }
+}

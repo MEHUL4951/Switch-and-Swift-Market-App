@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Switch_and_Shift.Models.Report>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.product_model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.buyer_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.seller_email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.buyer_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.seller_email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.report_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.report_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.report_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
