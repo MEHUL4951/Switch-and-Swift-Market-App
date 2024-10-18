@@ -54,17 +54,27 @@ namespace Switch_and_Shift.Controllers
         [HttpGet]
         public async Task<ActionResult> ShowReview(int? id)
         {
-           
+            string email = HttpContext.Session.GetString("Admin_Email");
+            if (email == null)
+            {
+                return RedirectToAction("AdminLogIn", "Admin");
+            }
             var reviewee = await _adminRepository.GetUserByIdAsync(id);
-           return View(db.UserReview.Where(x => x.reviewee_email == reviewee.Email).ToList().FirstOrDefault());
+            var models = db.UserReview.Where(x => x.reviewee_email == reviewee.Email).ToList();
+            return View(models);
         
         }
 
         [HttpGet]
         public async Task<ActionResult> Ban(int? id)
         {
+            string email = HttpContext.Session.GetString("Admin_Email");
+            if (email == null)
+            {
+                return RedirectToAction("AdminLogIn", "Admin");
+            }
 
-             var Reports_User =await  _adminRepository.GetUserByIdAsync(id);
+            var Reports_User =await  _adminRepository.GetUserByIdAsync(id);
             if (Reports_User != null)
             {
                 Reports_User.report_show = 0;
@@ -76,8 +86,13 @@ namespace Switch_and_Shift.Controllers
         [HttpGet]
         public async Task<ActionResult> Unban(int? id)
         {
+            string email = HttpContext.Session.GetString("Admin_Email");
+            if (email == null)
+            {
+                return RedirectToAction("AdminLogIn", "Admin");
+            }
 
-           var Reports_User = await _adminRepository.GetUserByIdAsync(id);
+            var Reports_User = await _adminRepository.GetUserByIdAsync(id);
             if (Reports_User != null)
             {
                 Reports_User.report_show = 1;
@@ -89,18 +104,27 @@ namespace Switch_and_Shift.Controllers
 
         public IActionResult Index()
         {
-       
+            string email = HttpContext.Session.GetString("Admin_Email");
+            if (email == null)
+            {
+                return RedirectToAction("AdminLogIn", "Admin");
+            }
+
             var displaydata = _adminRepository.GetAllUsersAsync();
             return View(displaydata);
         }
 
    
 
-        [HttpGet ]
+        [HttpGet]
         //GET: ADMINs
         public async Task<IActionResult> Index(string UserSearch)
          {
-           
+            string email = HttpContext.Session.GetString("Admin_Email");
+            if (email == null)
+            {
+                return RedirectToAction("AdminLogIn", "Admin");
+            }
             ViewData["GetUserDetails"] = UserSearch;
             var users = await _adminRepository.GetAllUsersAsync();
             if (!String.IsNullOrEmpty(UserSearch))
@@ -114,7 +138,12 @@ namespace Switch_and_Shift.Controllers
          // GET: ADMINs/Details/5
          public async Task<IActionResult> Details(int? id)
          {
-             if (id == null)
+            string email = HttpContext.Session.GetString("Admin_Email");
+            if (email == null)
+            {
+                return RedirectToAction("AdminLogIn", "Admin");
+            }
+            if (id == null)
              {
                  return NotFound();
              }
@@ -153,7 +182,12 @@ namespace Switch_and_Shift.Controllers
          // GET: ADMINs/Edit/5
          public async Task<IActionResult> Edit(int? id)
          {
-             if (id == null)
+            string email = HttpContext.Session.GetString("Admin_Email");
+            if (email == null)
+            {
+                return RedirectToAction("AdminLogIn", "Admin");
+            }
+            if (id == null)
              {
                  return NotFound();
              }
@@ -173,7 +207,13 @@ namespace Switch_and_Shift.Controllers
          [ValidateAntiForgeryToken]
          public async Task<IActionResult> Edit(int id, [Bind("UserID,FisrtName,LastName,District,Loaction,Email,Phone,Pasword")] Users users)
          {
-             if (id != users.UserId)
+            string email = HttpContext.Session.GetString("Admin_Email");
+            if (email == null)
+            {
+                return RedirectToAction("AdminLogIn", "Admin");
+            }
+             
+            if (id != users.UserId)
              {
                  return NotFound();
              }
@@ -209,18 +249,22 @@ namespace Switch_and_Shift.Controllers
         // GET: ADMINs/Delete/5
         public async Task<IActionResult> Delete(int? id)
          {
-             if (id == null)
+            string email = HttpContext.Session.GetString("Admin_Email");
+            if (email == null)
+            {
+                return RedirectToAction("AdminLogIn", "Admin");
+            }
+            if (id == null)
              {
                  return NotFound();
              }
 
    
-            var user = _adminRepository.GetUserByIdAsync(id);
+             var user = await _adminRepository.GetUserByIdAsync(id);
              if (user == null)
              {
                  return NotFound();
              }
-
              return View(user);
          }
 

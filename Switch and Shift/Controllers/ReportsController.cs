@@ -23,7 +23,7 @@ namespace Switch_and_Shift.Controllers
             _context = context;
             this.reportRepository = reportRepository;
             this.reportsAdminRepository = reportsAdminRepository;
-            this.reportsAdminRepository = reportsAdminRepository;
+            
 
         }
 
@@ -50,16 +50,17 @@ namespace Switch_and_Shift.Controllers
         }
 
 
+
         [HttpGet]
         public async Task<IActionResult> CreateReport(string id)
         {
-          
-   
-            var reportQuery =await reportsAdminRepository.GetAllReportsAsync();
+
+
+            var reportQuery = await reportsAdminRepository.GetAllReportsAsync();
             bool reportExists = reportQuery.Any(rep => rep.reporter_email == HttpContext.Session.GetString("Email") && rep.reportee_email == id);
 
             if (!reportExists)
-            {                
+            {
                 //success Toast
                 Reports_Admin report = new Reports_Admin();
                 report.reportee_email = id;
@@ -69,17 +70,20 @@ namespace Switch_and_Shift.Controllers
                     _context.Users.FirstOrDefault(m => m.Email == report.reportee_email).LastName.ToString();
                 report.reporter_name = _context.Users.FirstOrDefault(m => m.Email == report.reporter_email).FirstName.ToString() + " " +
                     _context.Users.FirstOrDefault(m => m.Email == report.reporter_email).LastName.ToString();
-              
-                 await  reportsAdminRepository.AddReportAsync(report);
+
+                await reportsAdminRepository.AddReportAsync(report);
             }
             else
             {
-                
+
                 //ERROR TOAST
                 ViewBag.CreateReportNotification = "You've already submitted a report";
             }
             return RedirectToAction("SoldProducts", "REPORTS");
         }
+
+
+
 
         [HttpGet]
         public async Task<IActionResult> CreateReport2(string id)
@@ -107,7 +111,7 @@ namespace Switch_and_Shift.Controllers
                 //ERROR TOAST
                 ViewBag.CreateReportNotification2 = "You've already submitted a report";
             }
-            return RedirectToAction("BoughtProducts", "REPORTS");
+            return RedirectToAction("BoughtProducts", "Reports");
         }
 
 
@@ -116,7 +120,7 @@ namespace Switch_and_Shift.Controllers
         public async Task<IActionResult> AddReview(string id)
         {
             var reviewee = _context.Users.Where(c => c.Email == id).FirstOrDefault();
-            return RedirectToAction("UserReview", "USERS", new { @id = reviewee.UserId });
+            return RedirectToAction("UserReview", "Users", new { @id = reviewee.UserId });
         }
 
 

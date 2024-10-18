@@ -17,12 +17,14 @@ namespace Switch_and_Shift.Models
 
 		[Required]
 		public string reportee_email { get; set; }
-		[Required]
-		public string reporter_name { get; set; }
-		[Required]
-		public string reportee_name { get; set; }
-		[Required]
-		public int report_show { get; set; }
+
+        [Required]
+        public string reporter_name { get; set; }
+        [Required]
+        public string reportee_name { get; set; }
+
+        [Required]
+        public int report_show { get; set; }
 	}
 
 }

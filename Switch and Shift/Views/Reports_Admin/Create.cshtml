@@ -2,14 +2,14 @@
 
 @{
     ViewData["Title"] = "Create";
+     Layout = "~/Views/Layouts/_AdminLayout.cshtml";
 }
 
-<h1>Create</h1>
 
-<h4>REPORTS_ADMIN</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="container justify-content-center">
+
+    <div class="row justify-content-center ">
+    <div class="col-md-7">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -23,15 +23,36 @@
                 <span asp-validation-for="reportee_email" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="reportee_name" class="control-label"></label>
+                <input asp-for="reportee_name" class="form-control" />
+                <span asp-validation-for="reportee_name" class="text-danger"></span>
+            </div>
+              <div class="form-group">
+                <label asp-for="reporter_name" class="control-label"></label>
+                <input asp-for="reporter_name" class="form-control" />
+                <span asp-validation-for="reporter_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="report_show" class="control-label"></label>
+                <input asp-for="report_show" class="form-control" />
+                <span asp-validation-for="report_show" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
         </form>
     </div>
+
+  
+
+</div>
+   
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

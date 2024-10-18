@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyProductAttribute("Switch and Shift")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f290978d0342438223bc1f6cc9d612cba63eb0de")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc817dc07d7414f0648c032d8cb237e71de39014")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Switch and Shift.Views")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 

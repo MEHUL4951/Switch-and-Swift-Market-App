@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift-main\\Switch and Shift\\Switch and Shift.csproj": {}
+    "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift\\Switch and Shift\\Switch and Shift.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift-main\\Switch and Shift\\Switch and Shift.csproj": {
+    "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift\\Switch and Shift\\Switch and Shift.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift-main\\Switch and Shift\\Switch and Shift.csproj",
+        "projectUniqueName": "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift\\Switch and Shift\\Switch and Shift.csproj",
         "projectName": "Switch and Shift",
-        "projectPath": "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift-main\\Switch and Shift\\Switch and Shift.csproj",
+        "projectPath": "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift\\Switch and Shift\\Switch and Shift.csproj",
         "packagesPath": "C:\\Users\\mehul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift-main\\Switch and Shift\\obj\\",
+        "outputPath": "C:\\Users\\mehul\\Downloads\\Switch-and-Shift\\Switch-and-Shift\\Switch and Shift\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mehul\\AppData\\Roaming\\NuGet\\NuGet.Config",

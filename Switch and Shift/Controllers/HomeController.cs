@@ -35,20 +35,12 @@ namespace Switch_and_Shift.Controllers
         }
         
 
-        public IActionResult AboutUs()
-        {
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();
         }
 
-        public IActionResult Team()
-        {
-            return View();
-        }
+      
 
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Welcome()

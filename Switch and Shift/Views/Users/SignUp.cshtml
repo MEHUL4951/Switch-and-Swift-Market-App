@@ -53,7 +53,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="input-icons">
-                                        <label asp-for="FirstName" class="control-label" ></label>
+                                        <label asp-for="FirstName" class="control-label"></label>
                                         <input asp-for="FirstName" class="sign-up-input form-control" id="name_field" type="text" class="name"
                                                placeholder="FirstName" value="" />
                                         <i style="margin-top:5%" class="fa fa-user fa-lg"></i>
@@ -64,7 +64,7 @@
                                     <div class="input-icons">
                                         <label asp-for="District" class="control-label"></label>
                                         <input asp-for="District" class="sign-up-input" id="District_field" type="text" class="District form-control"
-                                               placeholder="District" value="" /><i  style="margin-top:5%" class="fa fa-map-marker"></i>
+                                               placeholder="District" value="" /><i style="margin-top:5%" class="fa fa-map-marker"></i>
                                         <span asp-validation-for="District" class="text-danger"></span>
                                     </div>
 
@@ -124,14 +124,20 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input style="width:95%" type="submit" value="SIGN UP"  class="new-container custom-sign-up-button form"></input>
+                            <input style="width:95%" type="submit" value="SIGN UP" class="new-container custom-sign-up-button form"></input>
                             <div class="container-fluid adjust">
                                 <div class="col-sm-4 ContinueWith">
                                 </div>
                             </div>
                         </div>
-                        
-                       
+                        <h5>Alerady have an account?</h5>
+                        <div style="text-align:center" class="form-group">
+                            <a class="text-danger"
+                               asp-controller="Users" asp-action="Login">
+                               Login
+                            </a>
+                        </div>
+
 
                         <div class="form-group">
                             <label class="text-danger">@ViewBag.Notification</label>
@@ -143,13 +149,6 @@
         </div>
     </form>
 
-    <footer style="background-color:#F67576; margin-top:200px;" class="text-center">
-
-        <div class="text-white text-center p-3" style="background-color:#6406B2 ">
-            © 2021 Copyright:
-            <a class="text-white" href="">All Rights Reserved.</a>
-        </div>
-    </footer>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -166,6 +165,7 @@
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-

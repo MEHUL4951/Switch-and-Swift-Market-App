@@ -59,8 +59,10 @@ namespace Switch_and_Shift.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("report_admin_id,reporter_email,reportee_email")] Reports_Admin Report_Admin)
+        public async Task<IActionResult> Create(Reports_Admin Report_Admin)
         {
+            string email = HttpContext.Session.GetString("Admin_Email");
+            
             if (ModelState.IsValid)
             {
               await  reportsAdminRepository.AddReportAsync(Report_Admin);

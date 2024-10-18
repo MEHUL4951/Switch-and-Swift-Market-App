@@ -3,10 +3,6 @@
 @{
     ViewData["Title"] = "Home Page";
     Layout = null;
-    var numberOfPost = 4;
-    var counter = 0;
-    var counter1 = 0;
-    var counter2 = 0;
 }
 
 
@@ -62,33 +58,7 @@
     </div>
 
 
-    <nav class="navbar navbar-expand-md navbar-custom ">
-        <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto ml-auto mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link" asp-action="Index" >HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-action="AboutUs">ABOUT US</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT US</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-action="Team">TEAM PAGE</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-
-
-
+   
 
     <!----<div class="section3">
         <div class="section3overlay">
@@ -99,128 +69,7 @@
 
     <div class="banner-image image-container" style="background-color: #F2F2F2">
         <img src="~/website_images/cover_picture.png" class="my_image_class" alt="">
-        <div class="centered">
-            <div id="banner-text1" class="centered">Welcome to Switch & Shift</div>
-            <div id="banner-text2">BUY | SELL | RE-USE</div>
-        </div>
     </div>
-
-    <section id="section-3">
-        <div class="container">
-            <div class="row">
-                <h2>Keyboards</h2>
-
-                @foreach (var item in Model)
-                {
-                    if (counter < numberOfPost && item.product_category.Contains("Key"))
-                    {
-                        <div class="col-md-4 col-lg-3 col-sm-6">
-                            <div class="section-2-rectangle d-flex flex-column justify-content-center align-items-center">
-                                <div class="section-2-content">
-                                    <img src="@("~/Image/" + item.image_name)" asp-append-version="true" class="section-2-img" width="100" height="100" />
-                                    <p style="margin-top:10%;" class="bold-font">@Html.DisplayFor(modelItem => item.product_brand)</p>
-                                    <h6> Price : @Html.DisplayFor(modelItem => item.product_model)</h6>
-                                    <p class="descriptions">@Html.DisplayFor(modelItem => item.user_location)</p>
-                                </div>
-                            </div>
-                        </div>
-                        counter++;
-                    }
-
-                }
-
-            </div>
-        </div>
-    </section>
-
-
-
-    <section id="section-3">
-        <div class="container">
-            <div class="row">
-                <h2>Gaming Chair</h2>
-
-                @foreach (var item in Model)
-                {
-                    if (counter1 < numberOfPost && item.product_category.Contains("Chair"))
-                    {
-                        <div class="col-md-4 col-lg-3 col-sm-6">
-                            <div class="section-2-rectangle d-flex flex-column justify-content-center align-items-center">
-                                <div class="section-2-content">
-                                    <img src="@("~/Image/" + item.image_name)" asp-append-version="true" class="section-2-img" width="100" height="100" />
-                                    <p style="margin-top:10%;"  class="bold-font">@Html.DisplayFor(modelItem => item.product_brand)</p>
-                                    <h6> Price : @Html.DisplayFor(modelItem => item.product_model)</h6>
-                                    <p class="descriptions">@Html.DisplayFor(modelItem => item.user_location)</p>
-                                </div>
-                            </div>
-                        </div>
-                        counter1++;
-                    }
-                }
-            </div>
-        </div>
-    </section>
-
-
-    <section id="section-3">
-        <div class="container">
-            <div class="row">
-                <h2>Mouse</h2>
-
-                @foreach (var item in Model)
-                {
-                    if (counter2 < numberOfPost && item.product_category.Contains("Mouse"))
-                    {
-                        <div class="col-md-4 col-lg-3 col-sm-6">
-                            <div class="section-2-rectangle d-flex flex-column justify-content-center align-items-center">
-                                <div class="section-2-content">
-                                    <img src="@("~/Image/" + item.image_name)" asp-append-version="true" class="section-2-img" width="100" height="100" />
-                                    <p style="margin-top:10%;"  class="bold-font">@Html.DisplayFor(modelItem => item.product_brand)</p>
-                                    <h6> Price : @Html.DisplayFor(modelItem => item.product_model)</h6>
-                                    <p class="descriptions">@Html.DisplayFor(modelItem => item.user_location)</p>
-                                </div>
-                            </div>
-                        </div>
-                        counter2++;
-                    }
-
-                }
-
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-    <footer class="text-center custom-footer">
-        <div class="container p-4 pb-0 footer-padding" style="margin-bottom:15px;">
-            <a href="https://www.google.com/">
-                <i class="fa fa-facebook-square footer-font"></i>
-            </a>
-            <a href="https://www.google.com/">
-                <i class="fa fa-linkedin-square footer-font"></i>
-            </a>
-            <a href="https://www.google.com/">
-                <i class="fa fa-github footer-font"></i>
-            </a>
-        </div>
-        <p class="footer-links">
-            <a >Team</a>
-            |
-            <a href="#">About</a>
-            |
-            <a href="#">Contact</a>
-        </p>
-
-        <div class="text-white text-center p-3" style="background-color:#6406B2; font-size: 1rem;">
-            © 2021 Copyright:
-            <a class="text-white" href="" style="text-decoration: none;">All Rights Reserved.</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

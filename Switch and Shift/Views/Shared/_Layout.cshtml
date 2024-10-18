@@ -33,7 +33,7 @@
         <div class="bs-example">
             <div class="topnav">
                 <nav class="navbar navbar-expand-md navbar-light bg-light">
-                    <img src="~/website_images/logo.png" class="logo_image" />
+     
                     @if (HttpContextAccessor.HttpContext.Session.GetString("Email") != null)
                     {
                         <div class="topnav-right user">
@@ -89,41 +89,7 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
 
-    @* <footer class="border-top footer text-muted" style="background-color: #6406B2;">
-            <div class="container text-white">
-                &copy; 2021 - Switch_and_Shift - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
-    *@
-
-    <footer class="text-center custom-footer">
-        <div class="container p-4 pb-0 footer-padding" style="margin-bottom:15px;">
-            <a href="https://www.google.com/">
-                <i class="fa fa-facebook-square footer-font"></i>
-            </a>
-            <a href="https://www.google.com/">
-                <i class="fa fa-linkedin-square footer-font"></i>
-            </a>
-            <a href="https://www.google.com/">
-                <i class="fa fa-github footer-font"></i>
-            </a>
-        </div>
-        <p class="footer-links">
-            <a>Team</a>
-            |
-            <a href="#">About</a>
-            |
-            <a href="#">Contact</a>
-        </p>
-
-        <div class="text-white text-center p-3" style="background-color:#6406B2; font-size: 1rem;">
-            © 2021 Copyright:
-            <a class="text-white" href="" style="text-decoration: none;">All Rights Reserved.</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

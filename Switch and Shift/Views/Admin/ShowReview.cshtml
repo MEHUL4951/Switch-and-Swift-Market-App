@@ -4,9 +4,10 @@
 
 @{
     ViewData["Title"] = "ShowReview";
-    Layout = null;
-}
 
+    Layout = null;
+
+}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,31 +36,25 @@
     <!--Icons-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="~/css/post.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/admin_index.css" />
     <link rel="stylesheet" type="text/css" href="~/css/header.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/show_review.css" />
+
 </head>
 
-
-
 <body>
-
-    <header>
+    <!-- Title -->
+    <div class="container">
         <div class="bs-example">
             <div class="topnav">
                 <nav class="navbar navbar-expand-md navbar-light bg-light">
-                    <img src="~/website_images/logo.png" class="logo_image" />
+                    <img  class="logo_image" />
                     <div class="topnav-right user">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                <a asp-controller="Admin" asp-action="index" class="nav-link dropdown-toggle">
                                     <img src="~/website_images/profile_user_blue.png">
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item">ADMIN</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a asp-area="" asp-controller="Home" asp-action="Index" class="dropdown-item logout" id="log-out">Log Out</a>
-                                </div>
+
                             </li>
                         </ul>
                     </div>
@@ -68,70 +63,37 @@
             </div>
         </div>
 
+        <h1 class="text-center mb-4">Reviews</h1>
+    </div>
 
-        <nav class="navbar navbar-expand-md navbar-custom ">
-            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto ml-auto mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">USER LIST</a>
-                    </li>
-                    <a asp-controller="Categories" asp-action="Index" class="nav-link">Create Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Reports_Admin" asp-action="ReportPost2">Reports</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <h1>Reviews</h1>
-
-    @foreach (var item in Model)
-    {
-        <div class="section-0">
-            <div class="container">
-                <div class="row" style="margin-top:20px; height:250px">
-                    <div class="section2">
-                        <div style="margin:0" class="section2-product-details">
-                            <div class="container">
-                                <div class="header">
-                                    <img src="~/website_images/profile_user_blue.png" style="margin-top:40px" class="img-circle" />
-                                    <div style="margin-left:20px; width:600px">
-                                        <div class="user-name">
-                                            <h2 style="width:400px">@Html.DisplayFor(modelItem => item.reviewer_name)</h2>
-                                            <h5>@Html.DisplayFor(modelItem => item.reviewer_email)</h5>
-                                        </div>
-                                        <div class="post-location">
-                                            <p style="width:400px">@Html.DisplayFor(modelItem => item.review_description)</p>
-                                            <div class="float-right date">
-                                                <p>@Html.DisplayFor(modelItem => item.post_date)</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Reviews Section -->
+    <div class="container">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <div class="border rounded p-3 mb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="~/website_images/profile_user_blue.png" class="rounded-circle me-3" style="width: 50px; height: 50px;" />
+                        <div>
+                            <h5 class="mb-0">@Html.DisplayFor(modelItem => item.reviewer_name)</h5>
+                            <small class="text-muted">@Html.DisplayFor(modelItem => item.reviewer_email)</small>
                         </div>
                     </div>
+                    <p>@Html.DisplayFor(modelItem => item.review_description)</p>
+                    <small class="text-muted">@Html.DisplayFor(modelItem => item.post_date)</small>
                 </div>
-            </div>
-        </div>
-    }
-
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!--JS-->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
-            integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
-            crossorigin="anonymous"></script>
-
+            }
+            
+        }
+        else
+        {
+            <p class="text-lg-center">No reviews available.</p>
+        }
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

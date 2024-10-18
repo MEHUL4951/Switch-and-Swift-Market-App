@@ -55,6 +55,12 @@ namespace Switch_and_Shift.Controllers
                 ViewBag.Notification = "An account with this email already exists";
                 return View();  
             }
+            else if (user.Password != user.ConfirmPassword)
+            {
+                ModelState.Clear();
+                ViewBag.Notification = "Password and Confirm Password are not matching";
+                return View();
+            }
             else
             {
                
@@ -65,18 +71,12 @@ namespace Switch_and_Shift.Controllers
                 ModelState.Clear();
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
                 HttpContext.Session.SetString("Email", user.Email.ToString());
+                HttpContext.Session.SetString("FirstName", user.FirstName.ToString());
 
-                
-                return RedirectToAction("Index", "Home");
+
+
+                return RedirectToAction("Welcome", "Home");
             }
-        }
-
-
-
-        [HttpPost]
-        public ActionResult SignUpToRedirect()
-        {            
-            return RedirectToAction("SignUp", "Users");
         }
 
         [HttpGet]
@@ -108,7 +108,7 @@ namespace Switch_and_Shift.Controllers
                 ModelState.Clear();
                 return RedirectToAction("Welcome", "Home");
             }
-            else if (checklogin == null)
+            else if (checklogin == null || !checklogin.Password.Equals(user.Password) || !checklogin.Email.Equals(user.Email))
             {
                 ModelState.Clear();
                 ViewBag.Notification = "Wrong email or password";
@@ -125,7 +125,7 @@ namespace Switch_and_Shift.Controllers
         public ActionResult LogOut()
         {
             HttpContext.Session.Clear();
-            HttpContext.Session.SetString("Email", null);
+           
             HttpContext.Session.Remove("Email");
             HttpContext.Session.Remove("FirstName");
             HttpContext.Session.Remove("UserId");
@@ -136,15 +136,16 @@ namespace Switch_and_Shift.Controllers
         [HttpGet]
         public async Task<ActionResult> ViewProfile()
         {
-            if(HttpContext.Session.GetString("Email")!=null)
+            if(HttpContext.Session.GetString("UserId")!=null)
             {
-                string email = HttpContext.Session.GetString("Email");       
-                var userdetails = await userRepository.GetUserByEmailAsync(email);
-                return View(userdetails);
+                int userid = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+                var userDetails = await userRepository.GetUserByIdAsync(userid);
+                return View(userDetails);
+ 
             }
             else
             {
-                return View();
+                return View("Login","Users");
             }         
         }
 
@@ -152,6 +153,11 @@ namespace Switch_and_Shift.Controllers
         public async Task<ActionResult> UserReview(int? id)
         {
             string email = HttpContext.Session.GetString("Email");
+            if(email == null)
+            {
+                return View("Login", "Users");
+
+            }
             var reviewee = await userRepository.GetUserByIdAsync(id.Value);
             var reviewer =await userRepository.GetUserByEmailAsync(email);
             ViewBag.Name = reviewee.FirstName + " " + reviewee.LastName;
@@ -173,7 +179,12 @@ namespace Switch_and_Shift.Controllers
         [HttpGet]
         public async Task<ActionResult> ShowReview(int? id)
         {
-           
+            string email = HttpContext.Session.GetString("Email");
+            if (email == null)
+            {
+                return View("Login", "Users");
+
+            }
             var reviewee =await  userRepository.GetUserByIdAsync(id.Value);
             var review = await userRepository.GetUserByEmailAsync(reviewee.Email);
             return View(db.UserReview.Where(x => x.reviewee_email == reviewee.Email).ToList());            
@@ -190,12 +201,24 @@ namespace Switch_and_Shift.Controllers
         // GET: USERS
         public async Task<IActionResult> Index()
         {
+            string email = HttpContext.Session.GetString("Email");
+            if (email == null)
+            {
+                return View("Login", "Users");
+
+            }
             return View(await userRepository.GetAllUsersAsync());
         }
 
         // GET: USERS/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            string email = HttpContext.Session.GetString("Email");
+            if (email == null)
+            {
+                return View("Login", "Users");
+
+            }
             if (id == null)
             {
                 return NotFound();
@@ -210,34 +233,13 @@ namespace Switch_and_Shift.Controllers
             return View(User);
         }
 
-        // GET: USERS/Create
-        /*public IActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: USERS/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,FirstName,LastName,GamingName,Location,Email,Phone,Password")] USERS uSERS)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(uSERS);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(uSERS);
-        }*/
-    
        
         //GET: USERS/Edit/5
-        public ActionResult Edit()
+        public async Task<ActionResult> Edit()
         {
-            string userMail = HttpContext.Session.GetString("Email");
-            var userDetails = userRepository.GetUserByEmailAsync(userMail);
+            int userid = Convert.ToInt32(HttpContext.Session.GetString("UserId"));
+            var userDetails = await userRepository.GetUserByIdAsync(userid);
             return View(userDetails);
         }
 
@@ -248,31 +250,40 @@ namespace Switch_and_Shift.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(Users users)
         {
-            if (HttpContext.Session.GetString("Email")==null)
+            string email = HttpContext.Session.GetString("Email");
+            if (email == null)
             {
-                return NotFound();
+                return View("Login", "Users");
+
             }
 
             if (HttpContext.Session.GetString("Email")!=null)
             {
-                    string email = HttpContext.Session.GetString("Email");
+                    
                     var checklogin = await userRepository.GetUserByEmailAsync(email);
-                   
-                
-                    checklogin.FirstName = users.FirstName;
+                HttpContext.Session.Clear();
+               
+                HttpContext.Session.Remove("Email");
+                HttpContext.Session.Remove("FirstName");
+                HttpContext.Session.Remove("UserId");
+
+                   checklogin.FirstName = users.FirstName;
                     checklogin.LastName = users.LastName;
                     checklogin.District = users.District;
                     checklogin.Location = users.Location;
                     checklogin.Email = users.Email;
                     checklogin.Phone = users.Phone;
                     checklogin.Password = checklogin.Password;
-                   
-                    await userRepository.UpdateUserAsync(checklogin);
+                HttpContext.Session.SetString("Email", checklogin.Email);
+                HttpContext.Session.SetString("FirstName", checklogin.FirstName);
+
+                HttpContext.Session.SetString("UserId", checklogin.UserId.ToString());
+                await userRepository.UpdateUserAsync(checklogin);
                     return RedirectToAction(nameof(ViewProfile));
                 
                
             }
-            return View();
+            return View(users);
         }
 
         public ActionResult ForgetPassword()
@@ -306,34 +317,7 @@ namespace Switch_and_Shift.Controllers
         }
 
 
-        /*// GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var Users = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (Users == null)
-            {
-                return NotFound();
-            }
-
-            return View(Users);
-        }
-
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var Users = await _context.Users.FindAsync(id);
-            _context.Users.Remove(Users);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }*/
+       
 
         private async Task<bool> UsersExists(int id)
         {
